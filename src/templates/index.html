@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <script src="/node_modules/angular/angular.min.js"></script>
+        <!-- inject:css -->
+        <!-- endinject -->
+        <!-- inject:js -->
+        <!-- endinject -->
+        <script src="/app/ts/app.js"></script>
+    </head>
+    <body ng-app="app">
+        <header>
+            <span>Food &amp; Pain Tracker</span>
+        </header>
+        <main>
+            <section ng-controller="MealController as ctrl">
+                <div class="l-container">
+                    <div class="l-cards--empty" ng-show="ctrl.showNoMeals">
+                        <span>Looks like you haven't recorded any meals yet.<span>
+                        <span class="c-link" ng-click="ctrl.startMeal()">Try adding one now.</span>
+                    </div>
+                    <div class="l-cards">
+                        <div class="c-card" ng-repeat="meal in ctrl.meals">
+                            <div class="c-card__info">
+                                <div class="c-card__key">Time</div>
+                                <div class="c-card__value">{{meal.Time}}</div>
+                            </div>
+                            <div class="c-card__info">
+                                <div class="c-card__key">Food</div>
+                                <div class="c-card__value">{{meal.Food}}</div>
+                            </div>
+                            <div class="c-card__info">
+                                <div class="c-card__key">Notes</div>
+                                <div class="c-card__value">{{meal.Notes}}</div>
+                            </div>
+                            <div class="c-card__info">
+                                <div class="c-card__key">Pain</div>
+                                <div class="c-card__value">{{meal.Pain}}</div>
+                            </div>
+                        </div> 
+                        <div class="c-card c-card--new" ng-if="ctrl.showNew">
+                            <div class="c-card__info">
+                                <div class="c-card__key">Time</div>
+                                <input class="c-card__value" type="text" ng-model="ctrl.newMeal.Time"></input>
+                            </div>
+                            <div class="c-card__info">
+                                <div class="c-card__key">Food</div>
+                                <input class="c-card__value" type="text" ng-model="ctrl.newMeal.Food"></input>
+                            </div>
+                            <div class="c-card__info">
+                                <div class="c-card__key">Notes</div>
+                                <input class="c-card__value" type="text" ng-model="ctrl.newMeal.Notes"></input>
+                            </div>
+                            <div class="c-card__info">
+                                <div class="c-card__key">Pain</div>
+                                <input class="c-card__value" type="number" ng-model="ctrl.newMeal.Pain"></input>
+                            </div>
+                            <button class="c-button" ng-click="ctrl.saveMeal()">Save</button>
+                        </div>   
+                    </div>
+                </div>
+                <button class="c-button c-button--fab" ng-click="ctrl.startMeal()" ng-class="ctrl.showNew ? 'c-button--clicked' : ''">+</button>
+            </section>
+        </main>
+    </body>
+</html>

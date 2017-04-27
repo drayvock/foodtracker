@@ -1,0 +1,31 @@
+{
+  "name": "foodtracker",
+  "version": "1.0.0",
+  "description": "Application to track diet and pain for patience of doctors that want to know that kind of thing.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drayvock/foodtracker.git"
+  },
+  "author": "Johnathan Howell-Zobel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/drayvock/foodtracker/issues"
+  },
+  "homepage": "https://github.com/drayvock/foodtracker#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "gulp": "^3.9.1",
+    "gulp-inject": "^4.2.0",
+    "gulp-typescript": "^3.1.6"
+  },
+  "dependencies": {
+    "@types/angular": "^1.6.16",
+    "@types/restangular": "^1.5.34",
+    "angular": "^1.6.4",
+    "restangular": "^1.6.1"
+  }
+}
