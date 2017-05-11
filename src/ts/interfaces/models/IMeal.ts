@@ -1,8 +1,8 @@
 module Tracker.Interfaces.Models{
-    export interface IMeal{
-        Time: Date;
-        Food: string;
-        Notes: string;
-        Pain: Number;
+    export interface IMeal extends IIdentified{
+        time: Date;
+        food: string;
+        notes: string;
+        pain: Number;
     }
 }

@@ -20,8 +20,9 @@ header{
     width: 100%;
     color: #FFF;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    padding: 16px;
 }
 
 .l-container{
@@ -77,6 +78,11 @@ header{
     align-self: flex-end;
 }
 
+.c-card__actions{
+    display: flex;
+    justify-content: space-between;
+}
+
 .c-button.c-button--fab{
     width: 75px;
     height: 75px;
@@ -104,6 +110,11 @@ header{
 
 .c-button:hover{
     background-color: #44515D;
+}
+
+.c-button--link{
+    background-color: rgba(0,0,0,0);
+    color: #536271;
 }
 
 input[type="number"],

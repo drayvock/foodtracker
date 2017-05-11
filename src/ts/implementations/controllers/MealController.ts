@@ -1,22 +1,26 @@
 module Tracker.Implementations.Controllers{
     export class MealController{
         static $inject = [
-            'MealService'
+            'UserService'
         ]
 
         constructor(
-            private mealService: Interfaces.Services.IMealService
+            private userService: Interfaces.Services.IUserService
         ){
         }
 
         get meals(): Interfaces.Models.IMeal[]{
-            return this.mealService.collection;
+            if(this.userService.currentUser){
+                return this.userService.currentUser.meals;
+            }
+
+            return [];
         }
 
         newMeal: Interfaces.Models.IMeal;
 
         saveMeal(): void{
-            this.mealService.save(this.newMeal);
+            this.userService.addMeal(this.newMeal);
             this.showNew = false;
         }
 
@@ -27,14 +31,23 @@ module Tracker.Implementations.Controllers{
         }
 
         startMeal(): void{
-            this.newMeal = {                    
-                Time: new Date(),
-                Food: "",
-                Notes: "",
-                Pain: 0
-            }
-
+            this.resetNewMeal();
             this.showNew = true;
+        }
+
+        cancelMeal(): void{
+            this.resetNewMeal();
+            this.showNew = false;
+        }
+
+        private resetNewMeal(){
+            this.newMeal = {      
+                _id: "",              
+                time: new Date(),
+                food: "",
+                notes: "",
+                pain: 0
+            }
         }
     }
 }

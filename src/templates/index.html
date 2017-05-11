@@ -1,6 +1,8 @@
 <html>
     <head>
         <script src="/node_modules/angular/angular.min.js"></script>
+        <script src="/node_modules/lodash/lodash.min.js"></script>
+        <script src="/node_modules/restangular/dist/restangular.min.js"></script>
         <!-- inject:css -->
         <!-- endinject -->
         <!-- inject:js -->
@@ -10,6 +12,7 @@
     <body ng-app="app">
         <header>
             <span>Food &amp; Pain Tracker</span>
+            <span ng-controller="UserController as ctrl">Welcome, {{ctrl.firstName}}</span>
         </header>
         <main>
             <section ng-controller="MealController as ctrl">
@@ -22,39 +25,42 @@
                         <div class="c-card" ng-repeat="meal in ctrl.meals">
                             <div class="c-card__info">
                                 <div class="c-card__key">Time</div>
-                                <div class="c-card__value">{{meal.Time}}</div>
+                                <div class="c-card__value">{{meal.time}}</div>
                             </div>
                             <div class="c-card__info">
                                 <div class="c-card__key">Food</div>
-                                <div class="c-card__value">{{meal.Food}}</div>
+                                <div class="c-card__value">{{meal.food}}</div>
                             </div>
                             <div class="c-card__info">
                                 <div class="c-card__key">Notes</div>
-                                <div class="c-card__value">{{meal.Notes}}</div>
+                                <div class="c-card__value">{{meal.notes}}</div>
                             </div>
                             <div class="c-card__info">
                                 <div class="c-card__key">Pain</div>
-                                <div class="c-card__value">{{meal.Pain}}</div>
+                                <div class="c-card__value">{{meal.pain}}</div>
                             </div>
                         </div> 
                         <div class="c-card c-card--new" ng-if="ctrl.showNew">
                             <div class="c-card__info">
                                 <div class="c-card__key">Time</div>
-                                <input class="c-card__value" type="text" ng-model="ctrl.newMeal.Time"></input>
+                                <input class="c-card__value" type="text" ng-model="ctrl.newMeal.time"></input>
                             </div>
                             <div class="c-card__info">
                                 <div class="c-card__key">Food</div>
-                                <input class="c-card__value" type="text" ng-model="ctrl.newMeal.Food"></input>
+                                <input class="c-card__value" type="text" ng-model="ctrl.newMeal.food"></input>
                             </div>
                             <div class="c-card__info">
                                 <div class="c-card__key">Notes</div>
-                                <input class="c-card__value" type="text" ng-model="ctrl.newMeal.Notes"></input>
+                                <input class="c-card__value" type="text" ng-model="ctrl.newMeal.notes"></input>
                             </div>
                             <div class="c-card__info">
                                 <div class="c-card__key">Pain</div>
-                                <input class="c-card__value" type="number" ng-model="ctrl.newMeal.Pain"></input>
+                                <input class="c-card__value" type="number" ng-model="ctrl.newMeal.pain"></input>
                             </div>
-                            <button class="c-button" ng-click="ctrl.saveMeal()">Save</button>
+                            <div class="c-card__actions">
+                                <button class="c-button" ng-click="ctrl.saveMeal()">Save</button>
+                                <button class="c-button c-button--link" ng-click="ctrl.cancelMeal()">Cancel</button>
+                            </div>
                         </div>   
                     </div>
                 </div>
