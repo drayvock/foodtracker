@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "Application to track diet and pain for patience of doctors that want to know that kind of thing.",
   "main": "index.js",
-  "scripts": {
-    "test": "test"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/drayvock/foodtracker.git"
