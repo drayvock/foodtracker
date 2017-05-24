@@ -18,6 +18,12 @@ gulp.task("index", function(){
             .pipe(gulp.dest('./'))
 })
 
+gulp.task("html", function(){
+    var indexPath = './src/templates/index.html';
+    var target = gulp.src(['./src/templates/**/*.html', '!' + indexPath]);
+    return target.pipe(gulp.dest('./app/templates/'));
+})
+
 
 gulp.task("css", function(){
     return gulp.src('./src/css/**/*.css', {base: './src/css/'})
