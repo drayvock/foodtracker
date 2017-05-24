@@ -4,4 +4,4 @@ before_script:
   - npm install -g gulp
 install:
   - npm install
-  - npm start
+  - npm run build
