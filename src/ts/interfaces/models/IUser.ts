@@ -1,7 +1,8 @@
 module Tracker.Interfaces.Models{
     export interface IUser extends IIdentified{
-        username: string;
+        password: string;
         name: IName;
-        meals: IMeal[]
+        meals: IMeal[],
+        email: string;
     }
 }

@@ -1,0 +1,30 @@
+<section ng-controller="AuthenticationController as ctrl">
+    <div class="l-container">        
+        <div class="l-cards">
+            <div class="c-card">
+                <span class="c-card__error" ng-if="ctrl.error">{{ctrl.error}}</span>
+                <div class="c-card__info">                    
+                    <div class="c-card__key">Email Address</div>
+                    <input class="c-card__value" type="text" ng-model="ctrl.user.email"></input>
+                </div>
+                <div class="c-card__info">                    
+                    <div class="c-card__key">Password</div>
+                    <input class="c-card__value" type="password" ng-model="ctrl.user.password"></input>
+                </div>
+                <div class="c-card__info" ng-if="ctrl.isSigningUp">                    
+                    <div class="c-card__key">First Name</div>
+                    <input class="c-card__value" type="text" ng-model="ctrl.user.name.firstName"></input>
+                </div>
+                <div class="c-card__info" ng-if="ctrl.isSigningUp">                    
+                    <div class="c-card__key">Last Name</div>
+                    <input class="c-card__value" type="text" ng-model="ctrl.user.name.lastName"></input>
+                </div>
+                <div class="c-card__actions">
+                    <button class="c-button" ng-click="ctrl.signIn()" ng-if="!ctrl.isSigningUp">Login</button>
+                    <button class="c-button c-button--link" ng-click="ctrl.signUp()" ng-if="!ctrl.isSigningUp">Sign Up</button>
+                    <button class="c-button" ng-click="ctrl.register()" ng-if="ctrl.isSigningUp">Registering</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

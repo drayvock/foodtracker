@@ -21,12 +21,13 @@ module Tracker.Implementations.Repositories{
         post(item: Interfaces.Models.IUser): angular.IPromise<boolean>{
             // defined here: https://github.com/MattLong87/foodtracker-api
             var postObject: any = {
-                username: item.username,
+                password: item.password,
                 firstName: item.name.firstName,
-                lastName: item.name.lastName
+                lastName: item.name.lastName,
+                email: item.email
             }
 
-            return this._service.customPOST(postObject).then(() => {
+            return this._service.one('').customPOST(postObject).then(() => {
                 return true 
             });
         }
@@ -42,7 +43,7 @@ module Tracker.Implementations.Repositories{
         addMeal(user: Interfaces.Models.IUser, meal: Interfaces.Models.IMeal): angular.IPromise<boolean>{
             // defined here: https://github.com/MattLong87/foodtracker-api
             var postObject: any = {
-                username: user.username,
+                email: user.email,
                 time: meal.time,
                 food: meal.food,
                 notes: meal.notes,
@@ -57,13 +58,25 @@ module Tracker.Implementations.Repositories{
         removeMeal(user: Interfaces.Models.IUser, meal: Interfaces.Models.IMeal): angular.IPromise<boolean>{
             // defined here: https://github.com/MattLong87/foodtracker-api
             var deleteObject: any = {
-                username: user.username,
+                email: user.email,
                 mealId: meal._id
             }
 
             return this._service.one('me').one('meals').customDELETE('', deleteObject).then(() => {
                 return true;
             })
+        }
+
+        authenticate(email: string, password: string): angular.IPromise<string>{
+            // defined here: https://github.com/MattLong87/foodtracker-api
+            var postObject: any = {
+                email: email,
+                password: password
+            }
+
+            return this.restangular.service('login').one('').customPOST(postObject).then((result) => {
+                return result.plain();
+            });
         }
     }
 }
