@@ -12,7 +12,7 @@ module Tracker{
         constructor(
             private restangular: Restangular.IService
         ) {            
-            restangular.setBaseUrl("http://localhost:8080/api/");
+            restangular.setBaseUrl("http://foodtracker-api.herokuapp.com/api/");
             restangular.setDefaultHeaders({
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*',
