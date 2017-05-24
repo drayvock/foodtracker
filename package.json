@@ -4,7 +4,7 @@
   "description": "Application to track diet and pain for patience of doctors that want to know that kind of thing.",
   "main": "index.js",
   "scripts": {
-    "start": "npm install gulp -g && npm run build && http-server",
+    "start": "npm install && npm run build && http-server",
     "build": "gulp scripts && gulp css && gulp index && gulp html"
   },
   "repository": {
