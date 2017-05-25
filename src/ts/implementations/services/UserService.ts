@@ -21,6 +21,10 @@ module Tracker.Implementations.Services{
             return undefined;
         } 
 
+        set currentUser(value: Interfaces.Models.IUser){
+            this._currentUser = value;
+        }
+
         addMeal(meal: Interfaces.Models.IMeal): void{
             var mealIndex = this._currentUser.meals.indexOf(meal);
             if(mealIndex === -1){
@@ -37,7 +41,7 @@ module Tracker.Implementations.Services{
             }
         }
 
-        private fetchCurrentUser(){
+        fetchCurrentUser(){
             if(!this._fetchingCurrentUser){
                 this._fetchingCurrentUser = true;
                 this.userRepository.get().then(user => {

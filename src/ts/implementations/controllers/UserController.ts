@@ -16,5 +16,9 @@ module Tracker.Implementations.Controllers{
 
             return "";
         }
+
+        isAuthenticated(): boolean{
+            return !!this.userService.currentUser;
+        }
     }
 }

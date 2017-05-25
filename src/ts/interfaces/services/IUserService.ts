@@ -1,6 +1,7 @@
 module Tracker.Interfaces.Services{
     export interface IUserService {
-        readonly currentUser: Models.IUser;
+        currentUser: Models.IUser;
         addMeal(meal: Models.IMeal): void;
+        fetchCurrentUser(): void;
     }
 }

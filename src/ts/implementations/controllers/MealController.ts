@@ -1,10 +1,14 @@
 module Tracker.Implementations.Controllers{
     export class MealController{
         static $inject = [
+            '$location',
+            'AuthenticationService',
             'UserService'
         ]
 
         constructor(
+            private $location: angular.ILocationService,
+            private authenticationService: Interfaces.Services.IAuthenticationService,
             private userService: Interfaces.Services.IUserService
         ){
         }

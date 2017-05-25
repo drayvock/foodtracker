@@ -11,8 +11,7 @@ namespace Tracker.Implementations.Configurations{
             )
             .when(
                 '/meals', {
-                    templateUrl: '/app/templates/meals.html',
-                    
+                    templateUrl: '/app/templates/meals.html'
                 }
             )
         }

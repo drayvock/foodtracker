@@ -2,12 +2,14 @@ module Tracker.Implementations.Controllers{
     export class AuthenticationController{
         static $inject = [
             '$location',
-            'AuthenticationService'
+            'AuthenticationService',
+            'UserService'
         ];
 
         constructor(
             private $location: angular.ILocationService,
-            private authenticationService : Interfaces.Services.IAuthenticationService
+            private authenticationService : Interfaces.Services.IAuthenticationService,
+            private userService: Interfaces.Services.IUserService
         ){
             // TODO: This should be in a factory.
             this.user = {
@@ -20,7 +22,6 @@ module Tracker.Implementations.Controllers{
                 },
                 meals: []
             }
-
         }
 
         user: Interfaces.Models.IUser;
@@ -30,6 +31,7 @@ module Tracker.Implementations.Controllers{
         signIn(){
             this.authenticationService.authenticate(this.user.email, this.user.password).then(result => {
                 if(result){
+                    this.userService.currentUser = result;
                     this.$location.path('/meals');
                 } else {
                     this.error = 'Invalid email address and password combination';
@@ -42,7 +44,6 @@ module Tracker.Implementations.Controllers{
         }
 
         register(){
-            console.log('Registering');
             this.authenticationService.register(this.user).then(() => {
                 this.signIn();
             })

@@ -13,7 +13,7 @@
     <body ng-app="app">
         <header>
             <span>Food &amp; Pain Tracker</span>
-            <span ng-controller="UserController as ctrl">{{ctrl.isAuthenticated ? "Welcome, ctrl.firstName" : "Please sign in"}}</span>
+            <span ng-controller="UserController as ctrl">{{ctrl.isAuthenticated ? "Welcome, " + ctrl.firstName : "Please sign in"}}</span>
         </header>
         <main ng-view>
         </main>
